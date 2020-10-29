@@ -1,4 +1,4 @@
-// very early, not working cracker, use p.js for the time being
+// very early, not working cracker, use p.js until this one is finished
 
 const prompt = require('./input/prompt.js')({ sigint: true });
 let arrDefault = [
@@ -12,6 +12,7 @@ let arrDefault = [
   ']', '{', '}', '\\', '|', ';', ':', '"', "'", ',', '<',
   '.', '>', '/', '?', '`', '~'
 ];
+let nl = (input) => process.stdout.write(input);
 
 arrDefault = ['1', '2', '3'];
 
@@ -25,47 +26,19 @@ function output(password, attempts) {
   process.exit(1);
 }
 
-function init() {
+function init(yn = true) {
   for (var i = 0; i < password.length; i++) {
     currentPos[i] = '';
   }
-  attempts = 0;
-}
-
-function crack(password, rules) {
-  if (password === currentPos.join()) {
-    output(password, attempts);
-  } else {
-    for (var i = 0; i < password.length; i++) {
-      crack(password, rules);
-    }
+  if (yn) {
+    attempts = 0;
   }
 }
+init();
 
-function crackPassword(password, rules = arrDefault) {
-  crack(password, rules, true);
-  for (let i = 0; i <= password.length; i++) {
-    crack(password, rules, false);
-  }
-  console.log('Could not find password.');
+function getPw(pwd, times) {
+  if (pwd === pos.join()) return pwd;
+  
 }
 
-function getPw(count, attempt = '') {
-  if (count < 1) return;
-  for (var i = 0; i < arrDefault.length; i++) {
-    console.log(attempt);
-    attempt += arrDefault[i];
-    getPw(count-1, attempt);
-  }
-}
-
-function nl(toPrint) {
-  process.stdout.write(toPrint);
-}
-
-// init();
-// crack(password, arrDefault);
-
-getPw(password.length);
-
-// crackPassword(password);
+getPw(password, password.length);
