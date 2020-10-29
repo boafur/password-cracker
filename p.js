@@ -20,14 +20,6 @@ const arrDefault = [
 
 let inputPwd = prompt('Enter a password to find: ');
 
-const crack = () => {
-  for (var pos1 = 0; pos1 <= 61; pos1++)
-    for (var pos2 = 0; pos2 <= 61; pos2++)
-      for (var pos3 = 0; pos3 <= 61; pos3++)
-        for (var pos4 = 0; pos4 <= 61; pos4++)
-          console.log(`${arr[pos1]}${arr[pos2]}${arr[pos3]}${arr[pos4]}`);
-}
-
 const crackPassword = (password, rules = arrDefault) => {
   let times = 0;
   for (var pos1 = 0; pos1 <= rules.length; pos1++)
