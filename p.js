@@ -2,7 +2,7 @@
   * This was the file I used to create the original 4 digit cracker idea.
   * cracker.js is the real, fully functional cracker that supports
   * more than 4 digits.
-*/
+  */
 
 const prompt = require('./input/prompt.js')({sigint: true});
 
